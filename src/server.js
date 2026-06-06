@@ -6,6 +6,17 @@ import { createAppointment, isTaken } from "./store.js";
 const app = express();
 app.use(express.json());
 
+// Lightweight request log so tool calls are visible during demos.
+app.use((req, _res, next) => {
+  if (req.path !== "/health") {
+    const q = Object.keys(req.query).length ? ` ${JSON.stringify(req.query)}` : "";
+    const b = req.method !== "GET" && req.body ? ` body=${JSON.stringify(req.body)}` : "";
+    // eslint-disable-next-line no-console
+    console.log(`[req] ${req.method} ${req.path}${q}${b}`);
+  }
+  next();
+});
+
 const PORT = process.env.PORT || 8080;
 const API_KEY = process.env.API_KEY || ""; // shared secret; HttpTool sends x-api-key
 
