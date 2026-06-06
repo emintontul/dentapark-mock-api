@@ -1,0 +1,17 @@
+{
+  "name": "dentapark-mock-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mock clinic API for the DentaPark WhatsApp assistant demo (real endpoint, mock data).",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
